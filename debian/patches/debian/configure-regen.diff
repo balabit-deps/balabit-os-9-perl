@@ -1,0 +1,58 @@
+From: Niko Tyni <ntyni@debian.org>
+Date: Wed, 25 Aug 2021 21:24:38 +0300
+Subject: Regenerate Configure et al. after probe unit changes
+
+Bug-Debian: https://bugs.debian.org/762638
+---
+ Configure | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/Configure b/Configure
+index 913e080..630503a 100755
+--- a/Configure
++++ b/Configure
+@@ -1462,7 +1462,6 @@ glibpth="/lib /usr/lib $xlibpth"
+ glibpth="$glibpth /usr/ccs/lib /usr/ucblib /usr/local/lib"
+ test -f /usr/shlib/libc.so && glibpth="/usr/shlib $glibpth"
+ test -f /shlib/libc.so     && glibpth="/shlib $glibpth"
+-test -d /usr/lib64         && glibpth="$glibpth /lib64 /usr/lib64 /usr/local/lib64"
+ 
+ : Private path used by Configure to find libraries.  Its value
+ : is prepended to libpth. This variable takes care of special
+@@ -1493,8 +1492,7 @@ archname=''
+ usereentrant='undef'
+ : List of libraries we want.
+ : If anyone needs extra -lxxx, put those in a hint file.
+-libswanted="cl pthread socket bind inet nsl ndbm gdbm dbm db malloc dl ld"
+-libswanted="$libswanted sun m crypt sec util c cposix posix ucb bsd BSD"
++libswanted='gdbm gdbm_compat db dl m c crypt'
+ : We probably want to search /usr/shlib before most other libraries.
+ : This is only used by the lib/ExtUtils/MakeMaker.pm routine extliblist.
+ glibpth=`echo " $glibpth " | sed -e 's! /usr/shlib ! !'`
+@@ -4871,7 +4869,7 @@ case "$ccname" in
+ 	if $test $# -gt 0; then
+ 	    for i in $*; do
+ 		case $realpath in
+-		    */realpath) i=`$realpath $i` ;;
++		    */realpath) i=`$realpath --no-symlinks $i` ;;
+ 		esac
+ 		incpth="$incpth $i"
+ 		j="`$echo $i | $sed 's,/include[^/]*,/lib,'`"
+@@ -4883,7 +4881,7 @@ case "$ccname" in
+ 	    for xxx in $inclibpth $loclibpth $plibpth $glibpth; do
+ 		if $test -d $xxx; then
+ 		    case $realpath in
+-			*/realpath) xxx=`$realpath $xxx` ;;
++			*/realpath) xxx=`$realpath --no-symlinks $xxx` ;;
+ 		    esac
+ 		    case " $libpth " in
+ 		    *" $xxx "*) ;;
+@@ -24030,7 +24028,7 @@ sunos*X4*)
+     ;;
+ *) case "$usedl" in
+     $define|true|[yY]*)
+-	    set X `echo " $libs " | sed -e 's@ -lndbm @ @' -e 's@ -lgdbm @ @' -e 's@ -lgdbm_compat @ @' -e 's@ -ldbm @ @' -e 's@ -ldb @ @'`
++	    set X `echo " $libs " | sed -e 's@ -lgdbm @ @' -e 's@ -lgdbm_compat @ @' -e 's@ -ldb @ @'`
+ 	    shift
+ 	    perllibs="$*"
+ 	    ;;

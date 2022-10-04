@@ -48,3 +48,10 @@ fixes/x32-io-msg-skip.diff
 fixes/encode-CVE-2021-36770.diff
 fixes/gdbm-1.20.diff
 disable-libperl-tests.diff
+CVE-2020-16156-1.patch
+CVE-2020-16156-2.patch
+CVE-2020-16156-3.patch
+CVE-2020-16156-4.patch
+CVE-2020-16156-5.patch
+CVE-2020-16156-6.patch
+CVE-2020-16156-7.patch

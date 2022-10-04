@@ -1,3 +1,26 @@
+perl (5.34.0-3ubuntu1.1) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Signature verification bypass
+    - debian/patches/CVE-2020-16156-1.patch: signature
+      verification type CANNOT_VERIFY was not recognized
+      in cpan/CPAN/lib/CPAN/Distribution.pm.
+    - debia/patches/CVE-2020-16156-2.patch: add two new failure modes
+      in cpan/CPAN/lib/CPAN/Distribution.pm.
+    - debian/patches/CVE-2020-16156-3.patch: use gpg
+      to disentangle data and signature in cpan/CPAN/lib/CPAN/Distribution.pm.
+    - debian/patches/CVE-2020-16156-4.patch: replacing die with mydie in
+      three spots in cpan/CPAN/lib/CPAN/Distribution.pm.
+    - debian/patches/CVE-2020-16156-5.patch: disambiguate the call
+      to gpg --output by adding --verify in
+      cpan/CPAN/lib/CPAN/Distribution.pm.
+    - debian/patches/CVE-2020-16156-6.patch: corrects typo
+      in cpan/CPAN/lib/CPAN/Distribution.pm.
+    - debian/patches/CVE-2020-16156-7.patch: corrects typo
+      in cpan/CPAN/lib/CPAN/Distribution.pm.
+    - CVE-2020-16156
+
+ -- Leonidas Da Silva Barbosa <leo.barbosa@canonical.com>  Tue, 04 Oct 2022 15:16:23 -0300
+
 perl (5.34.0-3ubuntu1) jammy; urgency=medium
 
   * Merge with Debian; remaining changes:

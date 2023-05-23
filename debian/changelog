@@ -1,3 +1,12 @@
+perl (5.34.0-3ubuntu1.2) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: insecure default TLS configuration in HTTP::Tiny module
+    - debian/patches/CVE-2023-31484.patch: add verify_SSL=>1 to HTTP::Tiny to
+      verify https server identity.
+    - CVE-2023-31484
+
+ -- Camila Camargo de Matos <camila.camargodematos@canonical.com>  Tue, 23 May 2023 14:18:13 -0300
+
 perl (5.34.0-3ubuntu1.1) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Signature verification bypass

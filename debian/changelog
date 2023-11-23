@@ -1,3 +1,16 @@
+perl (5.34.0-3ubuntu1.3) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: heap overflow via regular expression
+    - debian/patches/CVE-2023-47038.patch: fix read/write past buffer end
+      in regcomp.c, t/re/pat_advanced.t.
+    - CVE-2023-47038
+  * SECURITY UPDATE: infinite recursion via warning message printing
+    - debian/patches/CVE-2022-48522.patch: fix warning handling in sv.c,
+      t/lib/warnings/sv.
+    - CVE-2022-48522
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 23 Nov 2023 09:56:46 -0500
+
 perl (5.34.0-3ubuntu1.2) jammy-security; urgency=medium
 
   * SECURITY UPDATE: insecure default TLS configuration in HTTP::Tiny module

@@ -1,3 +1,28 @@
+perl (5.34.0-3ubuntu1.5) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: threads race condition in file operations
+    - debian/patches/fixes/CVE-2025-40909-metaconfig.diff: check for
+      fdopendir in regen-configure/U/perl/d_fdopendir.U.
+    - debian/patches/fixes/CVE-2025-40909-1.diff: clone dirhandles without
+      fchdir in Configure, Cross/config.sh-arm-linux,
+      Cross/config.sh-arm-linux-n770, Porting/Glossary, Porting/config.sh,
+      config_h.SH, configure.com, plan9/config_sh.sample, sv.c,
+      t/op/threads-dirh.t, win32/config.gc, win32/config.vc.
+    - debian/patches/fixes/CVE-2025-40909-2.diff: minor corrections in
+      Cross/config.sh-arm-linux, Cross/config.sh-arm-linux-n770,
+      config_h.SH,plan9/config_sh.sample.
+    - debian/patches/fixes/CVE-2025-40909-3.diff: use PerlLIO_dup_cloexec
+      in Perl_dirp_dup to set O_CLOEXEC in sv.c.
+    - debian/patches/fixes/CVE-2025-40909-metaconfig-reorder.diff: slightly
+      reorder Configure and config_h.SH to match metaconfig output in
+      Configure, config_h.SH.
+    - debian/patches/fixes/CVE-2025-40909-generated.diff: update generated
+      files and checksums in uconfig.sh, uconfig64.sh, uconfig.h,
+      NetWare/config.wc.
+    - CVE-2025-40909
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 25 Jul 2025 13:26:40 -0400
+
 perl (5.34.0-3ubuntu1.4) jammy-security; urgency=medium
 
   * SECURITY UPDATE: heap overflow when transliterating non-ASCII bytes

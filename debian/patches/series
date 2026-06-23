@@ -65,3 +65,6 @@ fixes/CVE-2025-40909-2.diff
 fixes/CVE-2025-40909-3.diff
 fixes/CVE-2025-40909-metaconfig-reorder.diff
 fixes/CVE-2025-40909-generated.diff
+CVE-2026-8376_1.patch
+CVE-2026-8376_2.patch
+CVE-2026-42496.patch

@@ -1,3 +1,29 @@
+perl (5.34.0-3ubuntu1.7) jammy-security; urgency=high
+
+  * SECURITY UPDATE: integer overflow in regular expression compiler
+    - debian/patches/CVE-2026-8376_1.patch: accept quantifier limit error
+      on 32-bit architectures where the quantifier limit catches the
+      oversized pattern before the overflow guard
+    - CVE-2026-8376
+
+ -- Chrisa Oikonomou <chrisa.oikonomou@canonical.com>  Mon, 23 Jun 2026 11:11:00 +0300
+
+perl (5.34.0-3ubuntu1.6) jammy-security; urgency=high
+
+  * SECURITY UPDATE: path traversal in Archive::Tar symlink/hardlink extraction
+    - debian/patches/CVE-2026-42496.patch: validate symlink and hardlink
+      targets against absolute paths and directory traversal in
+      cpan/Archive-Tar/lib/Archive/Tar.pm
+    - CVE-2026-42496
+  * SECURITY UPDATE: integer overflow in regular expression compiler
+    - debian/patches/CVE-2026-8376_1.patch: add test cases for heap buffer
+      overflow via quantified fixed-string regex in t/re/pat_psycho.t
+    - debian/patches/CVE-2026-8376_2.patch: add overflow check before
+      fixed-string buffer allocation in regcomp.c / regcomp_study.c
+    - CVE-2026-8376
+
+ -- Chrisa Oikonomou <chrisa.oikonomou@canonical.com>  Fri, 12 Jun 2026 16:42:26 +0300
+
 perl (5.34.0-3ubuntu1.5) jammy-security; urgency=medium
 
   * SECURITY UPDATE: threads race condition in file operations
